@@ -51,10 +51,11 @@ unsigned char getByte(int byteAddress, bool * memError){
         *memError = true;
         return 0;
     }
-    int wordAddress = byteAddress/4;
-    int byteNumber = getBits(0, 3, byteAddress);
-    int byte = memory[byteAddress];
-    return getByteNumber(byteNumber, byte);
+    int wordAddress = byteAddress>>2;
+    int byteNo = byteAddress&0x3;
+    *memError = false;
+    int memVal = fetch(wordAddress, memError);
+    return getByteNumber(byteNo, memVal);
 }
 
 // @func    putByte()
@@ -65,15 +66,17 @@ unsigned char getByte(int byteAddress, bool * memError){
 // @param   value       the byte to change it to.
 // @param   memError    whether or not there is a memory error.
 // TODO: Fix this shit to actually access by byte address.
-void putByte(int byteAddress, unsigned char value, bool * memError){
-    if (byteAddress < 0 || byteAddress >= MEMSIZE){
+void putByte(int byteAddress, unsigned char value, bool *memError){
+    if (byteAddress < 0 || byteAddress >= MEMSIZE*4){
         *memError = true;
         return;
     }
-    int wordAddress = byteAddress/4;
-    int byteNumber = getBits(0, 3, byteAddress);
+    int wordAddress = byteAddress>>2;
+    int byteNo = byteAddress&0x3;
     *memError = false;
-    memory[byteAddress] = putByteNumber(byteNumber, value, memory[byteAddress]);
+    int memVal = fetch(wordAddress, memError);
+    memVal = putByteNumber(byteNo, value, memVal);
+    store(wordAddress, memVal, memError);
 }
 
 // @func    getWord()
@@ -84,12 +87,12 @@ void putByte(int byteAddress, unsigned char value, bool * memError){
 // @param   memError    whether or not there is a memory error.
 // @return              the word at the address.
 unsigned int getWord(int byteAddress, bool * memError){
-    if (byteAddress < 0 || byteAddress >= MEMSIZE || !!(byteAddress&0x3)){
+    if (byteAddress < 0 || byteAddress >= MEMSIZE*4 || !!(byteAddress&0x3)){
         *memError = true;
         return 0;
     }
     *memError = false;
-    return memory[byteAddress];
+    return memory[byteAddress>>2];
 }
 
 // @func    putWord()
@@ -100,12 +103,12 @@ unsigned int getWord(int byteAddress, bool * memError){
 // @param   value       the word to set at the address.
 // @param   memError    whether or not there is a memory error.
 void putWord(int byteAddress, unsigned int value, bool * memError){
-    if (byteAddress < 0 || byteAddress >= MEMSIZE || !!(byteAddress&0x3)){
+    if (byteAddress < 0 || byteAddress >= MEMSIZE*4 || !!(byteAddress&0x3)){
         *memError = true;
         return;
     }
     *memError = false;
-    memory[byteAddress] = value;
+    memory[byteAddress>>2] = value;
 }
 
 // @func    clearMemory()

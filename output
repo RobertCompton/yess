@@ -24,18 +24,18 @@ getRegister(5) = 11111116
 getRegister(6) = 11111117
 getRegister(7) = 11111118
 fetch(1) = 12345678, memory error: 0
-getWord(4) = 0, memory error: 0
+getWord(4) = 12345678, memory error: 0
 getWord(8) = 87654321, memory error: 0
-getWord(8) = ff, memory error: 0
-getWord(8) = ff, memory error: 0
-getWord(8) = ff, memory error: 0
-getWord(8) = ff, memory error: 0
+getWord(8) = 876543ff, memory error: 0
+getWord(8) = 8765ffff, memory error: 0
+getWord(8) = 87ffffff, memory error: 0
+getWord(8) = ffffffff, memory error: 0
 getWord(8) = 87654321, memory error: 0
-getWord(8) = 87654321, memory error: 0
-getWord(8) = 87654321, memory error: 0
-getWord(8) = 87654321, memory error: 0
-getWord(8) = ff, memory error: 0
-000: 00000000 00000000 000000ff 00000000 00000000 00000000 00000000 00000000 
+getWord(8) = ff654321, memory error: 0
+getWord(8) = ffff4321, memory error: 0
+getWord(8) = ffffff21, memory error: 0
+getWord(8) = ffffffff, memory error: 0
+000: 00000000 12345678 ffffffff 00000000 00000000 00000000 00000000 00000000 
 020: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 *
 
 memory error: 1
