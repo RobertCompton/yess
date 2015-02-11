@@ -2,14 +2,13 @@
 #include <stdbool.h>
 #include "tools.h"
 
-/*
-   Replace the return 0 with the code to perform the required function.
-   Do not change the function prototypes.
-   Be sure to check for errors in input.
-   Document EACH function with a function header (description, parameters,
-   return).
-*/
+// @file    tools.c
+// @author  comptonrj / rhoadskj
+// @brief   the tools for modifying bits and bytes.
 
+// @func    getBits()
+// @author  comptonrj
+// @brief   get the bits in a range.
 unsigned int getBits(int low, int high, unsigned int source)
 {
     if(low < 0 || high > 31 || low > high) return 0;
@@ -19,6 +18,9 @@ unsigned int getBits(int low, int high, unsigned int source)
     return temp;
 }
 
+// @func    setBits()
+// @author  comptonrj
+// @brief   set the bits in a range.
 unsigned int setBits(int low, int high, unsigned int source)
 {
     unsigned int temp = source;
@@ -31,6 +33,9 @@ unsigned int setBits(int low, int high, unsigned int source)
     return temp;
 }
 
+// @func    clearBits()
+// @author  comptonrj / rhoadskj
+// @brief   clears the bits in a range (sets to 0).
 unsigned int clearBits(int low, int high, unsigned int source)
 {
     unsigned int temp = source;
@@ -44,6 +49,9 @@ unsigned int clearBits(int low, int high, unsigned int source)
     return temp;
 }
 
+// @func    assignOneBit()
+// @author  comptonrj / rhoadskj
+// @brief   sets a single bit.
 unsigned int assignOneBit(int bitNumber, int bitValue, unsigned int source)
 {
     unsigned int temp = source;
@@ -53,6 +61,9 @@ unsigned int assignOneBit(int bitNumber, int bitValue, unsigned int source)
     return temp;
 }
 
+// @func    getByteNumber()
+// @author  comptonrj / rhoadskj
+// @brief   gets the byte at a certain location, 0 through 3.
 unsigned char getByteNumber(int byteNo, unsigned int source)
 {
    unsigned int temp = source;
@@ -64,6 +75,9 @@ unsigned char getByteNumber(int byteNo, unsigned int source)
    return ret;
 }
 
+// @func    putByteNumber()
+// @author  comptonrj / rhoadskj
+// @brief   sets the byte at a certain location, 0 through 3.
 unsigned int putByteNumber(int byteNo, unsigned char byteValue, unsigned int source)
 {
     unsigned int temp = source;
@@ -74,7 +88,9 @@ unsigned int putByteNumber(int byteNo, unsigned char byteValue, unsigned int sou
     return temp;
 }
 
-
+// @func    buildWord()
+// @author  rhoadskj
+// @brief   makes a word, using putByteNumber() for each byte.
 unsigned int buildWord(unsigned char byte0, unsigned char byte1, unsigned char byte2, unsigned char byte3)
 {
     unsigned int temp = 0x00000000;
@@ -85,6 +101,9 @@ unsigned int buildWord(unsigned char byte0, unsigned char byte1, unsigned char b
     return temp;
 }
 
+// @func    isNegative()
+// @author  rhoadskj
+// @brief   checks to see if the source is negative.
 bool isNegative(unsigned int source)
 {
    unsigned int temp = source;
@@ -93,6 +112,9 @@ bool isNegative(unsigned int source)
    return 0;
 }
 
+// @func    expandBits
+// @author  rhoadskj
+// @brief   expands the bits for printing purposes, spaces included.
 void expandBits(unsigned int source, char bits[36])
 {
     int i = 0;
@@ -109,6 +131,9 @@ void expandBits(unsigned int source, char bits[36])
     bits[35] = 0;
 }
 
+// @func    clearBuffer()
+// @author  rhoadskj
+// @brief   clears the buffer. shocking, I know.
 void clearBuffer(char * buff, int size)
 {
     int i = 0;
