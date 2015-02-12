@@ -51,8 +51,8 @@ unsigned char getByte(int byteAddress, bool * memError){
         *memError = true;
         return 0;
     }
-    int wordAddress = byteAddress>>2;
-    int byteNo = byteAddress&0x3;
+    int wordAddress = byteAddress >> 2;
+    int byteNo = byteAddress & 0x3;
     *memError = false;
     int memVal = fetch(wordAddress, memError);
     return getByteNumber(byteNo, memVal);
@@ -71,8 +71,8 @@ void putByte(int byteAddress, unsigned char value, bool *memError){
         *memError = true;
         return;
     }
-    int wordAddress = byteAddress>>2;
-    int byteNo = byteAddress&0x3;
+    int wordAddress = byteAddress >> 2;
+    int byteNo = byteAddress & 0x3;
     *memError = false;
     int memVal = fetch(wordAddress, memError);
     memVal = putByteNumber(byteNo, value, memVal);
@@ -87,12 +87,12 @@ void putByte(int byteAddress, unsigned char value, bool *memError){
 // @param   memError    whether or not there is a memory error.
 // @return              the word at the address.
 unsigned int getWord(int byteAddress, bool * memError){
-    if (byteAddress < 0 || byteAddress >= MEMSIZE*4 || !!(byteAddress&0x3)){
+    if (byteAddress < 0 || byteAddress >= MEMSIZE*4 || !!(byteAddress & 0x3)){
         *memError = true;
         return 0;
     }
     *memError = false;
-    return memory[byteAddress>>2];
+    return fetch(byteAddress >> 2, memError);
 }
 
 // @func    putWord()
@@ -108,7 +108,7 @@ void putWord(int byteAddress, unsigned int value, bool * memError){
         return;
     }
     *memError = false;
-    memory[byteAddress>>2] = value;
+    store(byteAddress >> 2, value, memError);
 }
 
 // @func    clearMemory()

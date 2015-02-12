@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include "loader.h"
+
 // @file    loader.c
 // @author  rhoadskj
 // @brief   loads the .yo program.
@@ -17,7 +21,7 @@ void discardRest() { }
 
 // @func    grabAddress()
 // @author  tba
-int grabAddress() { }
+unsigned int grabAddress() { }
 
 // @func    isAddress()
 // @author  tba
@@ -37,7 +41,7 @@ bool checkHex() { }
 
 // @func    grabDataByte()
 // @author  tba
-int grabDataByte() { }
+unsigned int grabDataByte() { }
 
 // @func    checkLine()
 // @author  tba

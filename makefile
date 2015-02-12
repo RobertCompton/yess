@@ -7,13 +7,13 @@ CC = gcc -g
 # @makes	yess
 # @author	rhoadskj
 yess: main.o tools.o memory.o registers.o memoryStage.o fetchStage.o\
-decodeStage.o executeStage.o writebackStage.o dump.o
+decodeStage.o executeStage.o writebackStage.o dump.o loader.o
 	$(CC) main.o tools.o memory.o registers.o memoryStage.o fetchStage.o decodeStage.o executeStage.o writebackStage.o dump.o -o yess
 
 # @makes	main.o
 # @author	rhoadskj
 main.o: main.c tools.h memory.h dump.h registers.h memoryStage.h fetchStage.h\
-decodeStage.h executeStage.h writebackStage.h
+decodeStage.h executeStage.h writebackStage.h loader.h
 	$(CC) -c main.c -o main.o
 
 # @makes	tools.o
@@ -61,6 +61,11 @@ writebackStage.o: writebackStage.c writebackStage.h
 dump.o: dump.c dump.h fetchStage.h decodeStage.h executeStage.h\
 memoryStage.h writebackStage.h registers.h memory.h
 	$(CC) -c dump.c -o dump.o
+
+# @makes	loader.o
+# @author	rhoadskj
+loader.o: loader.c loader.h
+	$(CC) -c loader.c -o loader.o
 
 # @makes	clean
 # @author	rhoadskj
