@@ -1,5 +1,6 @@
 #include <stdbool.h>
-bool validFileName();
+bool validFileName(char*);
+bool fileExists(char*);
 void discardRest();
 unsigned int grabAddress();
 bool isAddress();
