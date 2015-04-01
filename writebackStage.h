@@ -13,4 +13,6 @@ typedef struct
 //prototypes for functions called from files other than writebackStage
 wregister getWregister();
 void clearWregister();
+bool writebackStage(forwardType*);
+int updateWregister(int, int, int, int, int, int, int);
 #endif

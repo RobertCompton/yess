@@ -1,11 +1,11 @@
 #include <stdbool.h>
+int load(char*);
 bool validFileName(char*);
 bool fileExists(char*);
-void discardRest();
-unsigned int grabAddress();
-bool isAddress();
-bool isData();
-bool isSpaces();
-bool checkHex();
-unsigned int grabDataByte();
-bool checkLine();
+void discardRest(FILE*);
+unsigned int grabAddress(char*, int);
+bool isAddress(char*, int, int);
+bool isData(char*, int, int);
+bool isSpaces(char*, int, int);
+unsigned char grabDataByte(char*,int);
+bool checkLine(char*);

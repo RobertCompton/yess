@@ -1,6 +1,6 @@
 #ifndef DECODESTAGE_H
 #define DECODESTAGE_H
-typedef struct 
+typedef struct
 {
     unsigned int stat;
     unsigned int icode;
@@ -14,4 +14,6 @@ typedef struct
 //prototypes for functions called from files other than decodeStage
 dregister getDregister();
 void clearDregister();
+void decodeStage(forwardType);
+int updateDredgister(int, int, int, int, int, int, int);
 #endif

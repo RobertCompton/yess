@@ -15,8 +15,9 @@ static unsigned int memory[MEMSIZE];
 // @param   address     the address to fetch stuff at.
 // @param   memError    whether or not there is a memory error.
 // @return              the stuff at the address.
-unsigned int fetch(int address, bool *memError){
-  if (address < 0 || address >= MEMSIZE){
+unsigned int fetch(int address, bool *memError)
+{
+  if (address < 0 || address >= MEMSIZE) {
     *memError = true;
     return 0;
   }
@@ -30,8 +31,9 @@ unsigned int fetch(int address, bool *memError){
 // @param   address     the address to store stuff at.
 // @param   value       the stuff to store.
 // @param   memError    whether or not there is a memory error.
-void store(int address, unsigned int value, bool *memError){
-  if (address < 0 || address >= MEMSIZE){
+void store(int address, unsigned int value, bool *memError)
+{
+  if (address < 0 || address >= MEMSIZE) {
     *memError = true;
     return;
   }
@@ -46,8 +48,9 @@ void store(int address, unsigned int value, bool *memError){
 // @param   memError    whether or not there is a memory error.
 // @return              the byte at the address.
 // TODO: Fix this shit to actually access by byte address.
-unsigned char getByte(int byteAddress, bool * memError){
-    if (byteAddress < 0 || byteAddress >= MEMSIZE*4){
+unsigned char getByte(int byteAddress, bool *memError)
+{
+    if (byteAddress < 0 || byteAddress >= MEMSIZE*4) {
         *memError = true;
         return 0;
     }
@@ -65,9 +68,10 @@ unsigned char getByte(int byteAddress, bool * memError){
 // @param   byteAddress the address of the byte.
 // @param   value       the byte to change it to.
 // @param   memError    whether or not there is a memory error.
-// TODO: Fix this shit to actually access by byte address.
-void putByte(int byteAddress, unsigned char value, bool *memError){
-    if (byteAddress < 0 || byteAddress >= MEMSIZE*4){
+// TODO: Fix this to actually access by byte address.
+void putByte(int byteAddress, unsigned char value, bool *memError)
+{
+    if (byteAddress < 0 || byteAddress >= MEMSIZE*4) {
         *memError = true;
         return;
     }
@@ -81,13 +85,14 @@ void putByte(int byteAddress, unsigned char value, bool *memError){
 
 // @func    getWord()
 // @author  comptonrj
-// @brief   like getByte, but in word form!
+// @brief   like getByte, but in word form.
 //
 // @param   byteAddress the address of the byte.
 // @param   memError    whether or not there is a memory error.
 // @return              the word at the address.
-unsigned int getWord(int byteAddress, bool * memError){
-    if (byteAddress < 0 || byteAddress >= MEMSIZE*4 || !!(byteAddress & 0x3)){
+unsigned int getWord(int byteAddress, bool * memError)
+{
+    if (byteAddress < 0 || byteAddress >= MEMSIZE*4 || !!(byteAddress & 0x3)) {
         *memError = true;
         return 0;
     }
@@ -102,8 +107,9 @@ unsigned int getWord(int byteAddress, bool * memError){
 // @param   byteAddress the address of the byte.
 // @param   value       the word to set at the address.
 // @param   memError    whether or not there is a memory error.
-void putWord(int byteAddress, unsigned int value, bool * memError){
-    if (byteAddress < 0 || byteAddress >= MEMSIZE*4 || !!(byteAddress&0x3)){
+void putWord(int byteAddress, unsigned int value, bool * memError)
+{
+    if (byteAddress < 0 || byteAddress >= MEMSIZE*4 || !!(byteAddress&0x3)) {
         *memError = true;
         return;
     }
@@ -114,8 +120,9 @@ void putWord(int byteAddress, unsigned int value, bool * memError){
 // @func    clearMemory()
 // @author  comptonrj
 // @brief   clears the memory, sets everything to 0.
-void clearMemory(){
+void clearMemory()
+{
     int i = 0;
-    for(; i < MEMSIZE; i++)
+    for (; i < MEMSIZE; i++)
         memory[i] = 0;
 }

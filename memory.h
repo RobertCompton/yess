@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #define MEMSIZE 1024     //1024 words of memory
 #ifndef MEMORY_H
 #define MEMORY_H

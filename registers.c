@@ -12,25 +12,27 @@ static unsigned int CC;
 
 
 // @func    getRegister()
-// @author  @comptonrj
+// @author  comptonrj
 // @brief   returns the register at the number passed.
 // 
 // @param   regNum      the number of the register to get.
 // @return              the register itself.
-unsigned int getRegister(int regNum){
-    if(regNum < 0 || regNum >= REGSIZE)
+unsigned int getRegister(int regNum)
+{
+    if (regNum < 0 || regNum >= REGSIZE)
         return 0;
     return registers[regNum];
 }
 
 // @func    setRegister()
-// @author  @comptonrj
+// @author  comptonrj
 // @brief   sets the register at the number passed.
 // 
 // @param   regNum      the number of the register to set.
 // @param   regValue    the value to set the register to.
-void setRegister(int regNum, unsigned int regValue){ 
-    if(regNum < 0 || regNum >= REGSIZE)
+void setRegister(int regNum, unsigned int regValue)
+{
+    if (regNum < 0 || regNum >= REGSIZE)
         return;
     registers[regNum] = regValue;
 }
@@ -38,9 +40,10 @@ void setRegister(int regNum, unsigned int regValue){
 // @func    clearRegisters()
 // @author  comptonrj
 // @brief   clears all the registers.
-void clearRegisters(){
+void clearRegisters()
+{
     int i = 0;
-    for(; i < REGSIZE; i++)
+    for (; i < REGSIZE; i++)
         registers[i] = 0;
 }
 
@@ -50,9 +53,10 @@ void clearRegisters(){
 //
 // @param   bitNumber   the number of the bit to set.
 // @param   value       the value to change it to.
-void setCC(unsigned int bitNumber, unsigned int value){
-    if(bitNumber < 0 || bitNumber > 2) return;
-    if(value != 0 && value != 1) return;
+void setCC(unsigned int bitNumber, unsigned int value)
+{
+    if (bitNumber < 0 || bitNumber > 2) return;
+    if (value != 0 && value != 1) return;
     CC = assignOneBit(bitNumber, value, CC);
 }
 
@@ -62,8 +66,9 @@ void setCC(unsigned int bitNumber, unsigned int value){
 //
 // @param   bitNumber   the number of bit to look at.
 // @return              the condition code value.
-unsigned int getCC(unsigned int bitNumber){
-    if(bitNumber < 0 || bitNumber > 2) return;
+unsigned int getCC(unsigned int bitNumber)
+{
+    if (bitNumber < 0 || bitNumber > 2) return;
     return getBits(bitNumber, bitNumber, CC); 
 }
 

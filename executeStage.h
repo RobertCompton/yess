@@ -1,6 +1,6 @@
 #ifndef EXECUTESTAGE_H
 #define EXECUTESTAGE_H
-typedef struct 
+typedef struct
 {
     unsigned int stat;
     unsigned int icode;
@@ -19,4 +19,9 @@ typedef struct
 //prototypes for functions called from files other than executeStage
 eregister getEregister();
 void clearEregister();
+void executeStage();
+void initializeFuncPtrArray();
+int dump();
+int temp();
+int updateEregister(int, int, int, int, int, int, int, int, int, int, int, int);
 #endif
